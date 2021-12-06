@@ -1,28 +1,26 @@
 class Data:
 
     def __init__(self, data):
-        self.data = data
-        self.data = str(input("Введите число месяц и год в формате чч:мм:гггг: "))
-
+        self.data = str(data)
 
     @classmethod
     def number(cls, data):
-        number = list(map(int, data.split(':')))
+        number = list(map(int, data.split('-')))
         return number[0], number[1], number[2]
 
-
     @staticmethod
-    def validation(number):
-        if 1 >= number[0] <= 31:
-            if 1 >= number[1] <= 12:
-                if 1900 < number[2] > 2021:
+    def validation(data):
+        number = list(map(int, data.split('-')))
+        day = number[0]
+        month = number[1]
+        year = number[2]
+        if 1 <= day <= 31:
+            if 1 <= month <= 12:
+                if 1900 < year < 2022:
                     print("Данные введены корректно")
         else:
-            print("Данные введены некорректно")
-        return Data.validation(number)
+            return print("Данные введены некорректно")
 
 
-a = Data
-print(a)
-print(Data.number())
-print(Data.validation)
+print(Data.number('12-12-2012'))
+print(Data.validation('12-12-2012'))
