@@ -7,14 +7,12 @@ list = []
 while True:
     inp_data = input(" Введите число. Для завершения введите 'stop': ")
     try:
-        if int(inp_data) == int(inp_data):
-            list.append(int(inp_data))
-            print(list)
-        elif inp_data == 'stop':
+        if inp_data == 'stop':
             print(f'Операция завершена. список чисел: {list}.')
             break
-        elif int(inp_data) != int(inp_data) or inp_data != 'stop':
+        elif inp_data.isdigit() is False:
             raise OwnError("Необходимо вводить только числа!")
-
+        list.append(inp_data)
+        print(list)
     except OwnError as err:
         print(err)
