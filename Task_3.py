@@ -1,19 +1,20 @@
-class OwnError(Exception):
-    def __init__(self):
-        self.list = []
-
-    def func(self):
-
-        while True:
-            try:
-                inp_data = int(input(" Введите число. Для завершения введите 'stop': "))
-                self.list.append(inp_data)
-                return list
-            except:
-                print("недопустимое значение")
-
-a = OwnError()
-print(a.func())
+class OwnError(ValueError):
+    def __init__(self, text):
+        self.text = text
 
 
+list = []
+while True:
+    inp_data = input(" Введите число. Для завершения введите 'stop': ")
+    try:
+        if int(inp_data) == int(inp_data):
+            list.append(int(inp_data))
+            print(list)
+        elif inp_data == 'stop':
+            print(f'Операция завершена. список чисел: {list}.')
+            break
+        elif int(inp_data) != int(inp_data) or inp_data != 'stop':
+            raise OwnError("Необходимо вводить только числа!")
 
+    except OwnError as err:
+        print(err)
